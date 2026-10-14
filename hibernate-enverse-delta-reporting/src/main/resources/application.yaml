@@ -1,0 +1,43 @@
+
+server:
+  port: 8085
+
+spring:
+  application:
+    name: hibernate-enverse-delta-reporting
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+      org:
+        hibernate:
+          envers:
+            store_data_at_delete: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: mappings
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE
+    org.hibernate.tool.schema: DEBUG
+    org.hibernate.tool.schema.internal: TRACE
