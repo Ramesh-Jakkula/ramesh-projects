@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!--
+    CLOUD AGGREGATOR POM
+    =====================
+    This is an AGGREGATOR module — it groups cloud infrastructure modules together.
+
+    packaging=pom means it produces no JAR. It exists purely to:
+      1. Organize cloud modules (service-registry, config-server, api-gateway) as a group
+      2. Let you build all cloud modules with: cd cloud && mvn clean install
+      3. Pass down the parent POM's dependencyManagement/pluginManagement to children
+
+    Inheritance chain: root (airline-microservice) → cloud → service-registry/config-server/api-gateway
+    This means all properties, dependency versions, and plugin versions flow from root → here → children.
+-->
+   <parent>
+       <groupId>com.airline</groupId>
+       <artifactId>microservices</artifactId>
+       <version>0.0.1-SNAPSHOT</version>
+       <relativePath>../pom.xml</relativePath>
+   </parent>
+
+    <artifactId>cloud</artifactId>
+    <packaging>pom</packaging>
+    <name>Cloud Infrastructure</name>
+    <description>Aggregator for Cloud-related modules such as Config Server, API Gateway,Service Discovery and others </description>
+    <!--
+        Sub-modules of this aggregator.
+        Running "mvn install" in this directory builds all three.
+    -->
+    <modules>
+        <module>service-registry</module>
+        <module>config-server</module>
+        <module>api-gateway</module>
+    </modules>
+</project>

@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: airline-core-service
+
+  config:
+    import: optional:configserver:http://localhost:8888
+
+
+
+
+
+# start airline core service->config server->

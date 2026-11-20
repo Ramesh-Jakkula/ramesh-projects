@@ -1,0 +1,2387 @@
+{
+  "info": {
+    "_postman_id": "eab9f948-bd54-4508-aaee-32c9f765da8f",
+    "name": "Airline System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "36712804"
+  },
+  "item": [
+    {
+      "name": "User service",
+      "item": [
+        {
+          "name": "Sing Up",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"fullName\":\"ramesh\",\r\n    \"email\":\"ramesh@gmail.com\",\r\n    \"password\":\"12345678\",\r\n    \"username\":\"ramesh\",\r\n    \"role\": \"ROLE_USER\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/auth/signup",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "auth",
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n \r\n    \"email\":\"ramesh@gmail.com\",\r\n    \"password\":\"12345678\"\r\n    \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Profile",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "refresh-token",
+                "value": "{{refresh_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5000/api/users/profile",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "users",
+                "profile"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "City",
+      "item": [
+        {
+          "name": "create city",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Mumbai\",\r\n  \"cityCode\": \"BOM\",\r\n  \"countryCode\": \"IN\",\r\n  \"countryName\": \"India\",\r\n  \"regionCode\": \"MH\",\r\n  \"timeZoneOffset\": \"+05:30\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/cities",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "cities"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get all cities",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/cities",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "cities"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Airport",
+      "item": [
+        {
+          "name": "create airport",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"iataCode\": \"MAA\",\r\n  \"name\": \"Chennai International Airport\",\r\n  \"address\": {\r\n    \"street\": \"Meenambakkam\",\r\n    \"city\": \"Chennai\",\r\n    \"state\": \"Tamil Nadu\",\r\n    \"country\": \"India\",\r\n    \"postalCode\": \"600027\"\r\n  },\r\n  \"geoCode\": {\r\n    \"latitude\": 12.9941,\r\n    \"longitude\": 80.1709\r\n  },\r\n  \"timeZone\": \"Asia/Kolkata\",\r\n  \"cityId\": 3\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/airports",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "airports"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get all airports",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/airports",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "airports"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "AirlineService",
+      "item": [
+        {
+          "name": "create airline",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"iataCode\": \"EK\",\r\n  \"icaoCode\": \"UAE\",\r\n  \"name\": \"Emirates\",\r\n  \"alias\": \"Emirates\",\r\n  \"country\": \"United Arab Emirates\",\r\n  \"logoUrl\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Emirates_logo.svg/512px-Emirates_logo.svg.png\",\r\n  \"website\": \"https://www.emirates.com\",\r\n  \"status\": \"ACTIVE\",\r\n  \"alliance\": null,\r\n  \"supportPhone\": \"+971-600-555555\",\r\n  \"supportEmail\": \"customer.affairs@emirates.com\",\r\n  \"supportHours\": \"24/7\",\r\n  \"headquartersCityId\": 1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/airlines",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "airlines"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get airline by id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/airlines/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "airlines",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"iataCode\": \"EK\",\r\n  \"icaoCode\": \"UAE\",\r\n  \"name\": \"Emirates\",\r\n  \"alias\": \"Emirates\",\r\n  \"country\": \"United Arab Emirates\",\r\n  \"logoUrl\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Emirates_logo.svg/512px-Emirates_logo.svg.png\",\r\n  \"website\": \"https://www.emirates.com\",\r\n  \"status\": \"ACTIVE\",\r\n  \"alliance\": \"Oneworld\",\r\n  \"supportPhone\": \"+971-600-555555\",\r\n  \"supportEmail\": \"customer.affairs@emirates.com\",\r\n  \"supportHours\": \"24/7\",\r\n  \"headquartersCityId\": 1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/airlines",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "airlines"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get airline by owner",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "refresh-token",
+                "value": "{{refresh_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5000/api/airlines/admin",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "airlines",
+                "admin"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get all airline",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "text"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/airlines",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "airlines"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete Airline",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/airlines/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "airlines",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Aircraft Service",
+      "item": [
+        {
+          "name": "create aircraft",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"code\": \"VT-IND-001\",\r\n  \"model\": \"A320neo\",\r\n  \"manufacturer\": \"Airbus\",\r\n  \"seatingCapacity\": 186,\r\n  \"economySeats\": 150,\r\n  \"premiumEconomySeats\": 12,\r\n  \"businessSeats\": 20,\r\n  \"firstClassSeats\": 4,\r\n  \"rangeKm\": 6300,\r\n  \"cruisingSpeedKmh\": 840,\r\n  \"maxAltitudeFt\": 39000,\r\n  \"yearOfManufacture\": 2022,\r\n  \"registrationDate\": \"2022-06-15\",\r\n  \"nextMaintenanceDate\": \"2027-02-15\",\r\n  \"status\": \"ACTIVE\",\r\n  \"isAvailable\": true,\r\n  \"airlineId\": 2,\r\n  \"currentAirportId\": 1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/aircrafts",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "aircrafts"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get by airline",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/aircrafts",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "aircrafts"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Flight",
+      "item": [
+        {
+          "name": "create flight",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"flightNumber\": \"EK202\",\r\n  \"aircraftId\": 1,\r\n  \"departureAirportId\": 1,\r\n  \"arrivalAirportId\": 2,\r\n  \"status\": \"SCHEDULED\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/flights",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "flights"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "sample resposne",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"flightNumber\": \"EK202\",\r\n  \"aircraftId\": 1,\r\n  \"departureAirportId\": 1,\r\n  \"arrivalAirportId\": 2,\r\n  \"status\": \"SCHEDULED\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/flights",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "flights"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Sat, 14 Nov 2026 05:11:59 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": 1,\n  \"flightNumber\": \"EK202\",\n  \"airline\": {\n    \"id\": 2,\n    \"iataCode\": \"EK\",\n    \"icaoCode\": \"UAE\",\n    \"name\": \"Emirates\",\n    \"alias\": \"Emirates\",\n    \"logoUrl\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Emirates_logo.svg/512px-Emirates_logo.svg.png\",\n    \"website\": \"https://www.emirates.com\",\n    \"status\": \"ACTIVE\",\n    \"alliance\": null,\n    \"createdAt\": \"2026-11-13T14:33:27.391531Z\",\n    \"updatedAt\": \"2026-11-13T14:33:27.391531Z\",\n    \"ownerId\": 52,\n    \"owner\": null,\n    \"updatedById\": null,\n    \"headquartersCity\": null,\n    \"support\": {\n      \"email\": \"customer.affairs@emirates.com\",\n      \"phone\": \"+971-600-555555\",\n      \"hours\": \"24/7\"\n    }\n  },\n  \"aircraft\": {\n    \"id\": 1,\n    \"code\": \"VT-IND-001\",\n    \"model\": \"A320neo\",\n    \"manufacturer\": \"Airbus\",\n    \"seatingCapacity\": 186,\n    \"economySeats\": 150,\n    \"premiumEconomySeats\": 12,\n    \"businessSeats\": 20,\n    \"firstClassSeats\": 4,\n    \"rangeKm\": 6300,\n    \"cruisingSpeedKmh\": 840,\n    \"maxAltitudeFt\": 39000,\n    \"yearOfManufacture\": 2022,\n    \"registrationDate\": \"2022-06-15\",\n    \"nextMaintenanceDate\": \"2027-02-15\",\n    \"status\": \"ACTIVE\",\n    \"isAvailable\": true,\n    \"airlineId\": 2,\n    \"airlineName\": \"Emirates\",\n    \"airlineIataCode\": \"EK\",\n    \"currentAirportId\": 1,\n    \"currentAirportCity\": null,\n    \"currentAirportCode\": null,\n    \"currentAirportName\": null,\n    \"totalSeats\": 186,\n    \"requiresMaintenance\": false,\n    \"isOperational\": true,\n    \"createdAt\": \"2026-11-13T14:53:47.176463Z\",\n    \"updatedAt\": \"2026-11-13T14:53:47.176463Z\"\n  },\n  \"departureAirport\": {\n    \"id\": 1,\n    \"iataCode\": \"HYD\",\n    \"name\": \"Rajiv Gandhi International Airport\",\n    \"detailedName\": \"RAJIV GANDHI INTERNATIONAL AIRPORT/HYD\",\n    \"timeZone\": null,\n    \"address\": {\n      \"street\": \"Shamshabad\",\n      \"postalCode\": \"500409\"\n    },\n    \"city\": {\n      \"id\": 1,\n      \"name\": \"Hyderabad\",\n      \"cityCode\": \"HYD\",\n      \"countryName\": \"India\",\n      \"countryCode\": \"IN\",\n      \"regionCode\": \"TS\",\n      \"timeZoneOffset\": null\n    },\n    \"geoCode\": {\n      \"latitude\": 17.2403,\n      \"longitude\": 78.4294\n    }\n  },\n  \"arrivalAirport\": {\n    \"id\": 2,\n    \"iataCode\": \"BOM\",\n    \"name\": \"Chhatrapati Shivaji Maharaj International Airport\",\n    \"detailedName\": \"CHHATRAPATI SHIVAJI MAHARAJ INTERNATIONAL AIRPORT/BOM\",\n    \"timeZone\": null,\n    \"address\": {\n      \"street\": \"Sahar\",\n      \"postalCode\": \"400099\"\n    },\n    \"city\": {\n      \"id\": 4,\n      \"name\": \"Mumbai\",\n      \"cityCode\": \"BOM\",\n      \"countryName\": \"India\",\n      \"countryCode\": \"IN\",\n      \"regionCode\": \"MH\",\n      \"timeZoneOffset\": null\n    },\n    \"geoCode\": {\n      \"latitude\": 19.0896,\n      \"longitude\": 72.8656\n    }\n  },\n  \"departureTime\": null,\n  \"arrivalTime\": null,\n  \"status\": \"SCHEDULED\",\n  \"lowestPrice\": null,\n  \"totalAvailableSeats\": null,\n  \"createdAt\": \"2026-11-14T05:11:56.089989900Z\",\n  \"updatedAt\": \"2026-11-14T05:11:56.089989900Z\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "get all fllight by airline",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Airline-Id",
+                "value": "2",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5000/api/flights/airline",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "flights",
+                "airline"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get by id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/flights/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "flights",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Flight Schadule",
+      "item": [
+        {
+          "name": "create flight schedule",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"flightId\": 1,\r\n  \"departureTime\": \"10:30:00\",\r\n  \"arrivalTime\": \"12:30:00\",\r\n  \"startDate\": \"2026-11-16\",\r\n  \"endDate\": \"2026-12-16\",\r\n  \"operatingDays\": [\r\n    \"MONDAY\",\r\n    \"TUESDAY\",\r\n    \"WEDNESDAY\",\r\n    \"THURSDAY\",\r\n    \"FRIDAY\"\r\n  ],\r\n  \"isActive\": true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/flight-schedules",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "flight-schedules"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "sample respone",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"flightId\": 1,\r\n  \"departureTime\": \"10:30:00\",\r\n  \"arrivalTime\": \"12:30:00\",\r\n  \"startDate\": \"2026-11-16\",\r\n  \"endDate\": \"2026-12-16\",\r\n  \"operatingDays\": [\r\n    \"MONDAY\",\r\n    \"TUESDAY\",\r\n    \"WEDNESDAY\",\r\n    \"THURSDAY\",\r\n    \"FRIDAY\"\r\n  ],\r\n  \"isActive\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/flight-schedules",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "flight-schedules"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Sat, 14 Nov 2026 07:09:42 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": 1,\n  \"flightId\": 1,\n  \"flightNumber\": \"EK202\",\n  \"departureAirport\": {\n    \"id\": 1,\n    \"iataCode\": \"HYD\",\n    \"name\": \"Rajiv Gandhi International Airport\",\n    \"detailedName\": \"RAJIV GANDHI INTERNATIONAL AIRPORT/HYD\",\n    \"timeZone\": null,\n    \"address\": {\n      \"street\": \"Shamshabad\",\n      \"postalCode\": \"500409\"\n    },\n    \"city\": {\n      \"id\": 1,\n      \"name\": \"Hyderabad\",\n      \"cityCode\": \"HYD\",\n      \"countryName\": \"India\",\n      \"countryCode\": \"IN\",\n      \"regionCode\": \"TS\",\n      \"timeZoneOffset\": null\n    },\n    \"geoCode\": {\n      \"latitude\": 17.2403,\n      \"longitude\": 78.4294\n    }\n  },\n  \"arrivalAirport\": {\n    \"id\": 2,\n    \"iataCode\": \"BOM\",\n    \"name\": \"Chhatrapati Shivaji Maharaj International Airport\",\n    \"detailedName\": \"CHHATRAPATI SHIVAJI MAHARAJ INTERNATIONAL AIRPORT/BOM\",\n    \"timeZone\": null,\n    \"address\": {\n      \"street\": \"Sahar\",\n      \"postalCode\": \"400099\"\n    },\n    \"city\": {\n      \"id\": 4,\n      \"name\": \"Mumbai\",\n      \"cityCode\": \"BOM\",\n      \"countryName\": \"India\",\n      \"countryCode\": \"IN\",\n      \"regionCode\": \"MH\",\n      \"timeZoneOffset\": null\n    },\n    \"geoCode\": {\n      \"latitude\": 19.0896,\n      \"longitude\": 72.8656\n    }\n  },\n  \"departureTime\": \"10:30:00\",\n  \"arrivalTime\": \"12:30:00\",\n  \"startDate\": \"2026-11-16\",\n  \"endDate\": \"2026-12-16\",\n  \"operatingDays\": [\n    \"MONDAY\",\n    \"TUESDAY\",\n    \"WEDNESDAY\",\n    \"THURSDAY\",\n    \"FRIDAY\"\n  ],\n  \"isActive\": true\n}"
+            }
+          ]
+        },
+        {
+          "name": "get schedule by airline",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Airline-Id",
+                "value": "1"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5000/api/flight-schedules",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "flight-schedules"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Flight Instance",
+      "item": [
+        {
+          "name": "create flight instance",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"scheduleId\": 1,\r\n  \"flightId\": 1,\r\n  \"departureAirportId\": 1,\r\n  \"arrivalAirportId\": 3,\r\n  \"departureDateTime\": \"2025-10-01T09:30:00\",\r\n  \"arrivalDateTime\": \"2025-10-01T12:45:00\",\r\n  \"totalSeats\": 180,\r\n  \"availableSeats\": 180,\r\n  \"status\": \"SCHEDULED\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/flight-instances",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "flight-instances"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get flight instance by flight id",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/flight-instances?flightId=1&page=0&size=10",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "flight-instances"
+              ],
+              "query": [
+                {
+                  "key": "flightId",
+                  "value": "1"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search Flight",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/flight-instances?page=0&size=10",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "flight-instances"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get Flight Instance by ID",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/flight-instances/25",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "flight-instances",
+                "25"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get All Flight Instances by Airline ID",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Airline-Id",
+                "value": "1",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5000/api/flight-instances?page=0&size=10",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "flight-instances"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get all",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/flight-instances",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "flight-instances"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "cabin class",
+      "item": [
+        {
+          "name": "create cabin class",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"ECONOMY\",\r\n  \"code\": \"EC\",\r\n  \"description\": \"Spacious seats with premium dining and lounge access.\",\r\n  \"aircraftId\": 1,\r\n  \"displayOrder\": 3,\r\n  \"isActive\": true,\r\n  \"isBookable\": true,\r\n  \"typicalSeatPitch\": 38,\r\n  \"typicalSeatWidth\": 21,\r\n  \"seatType\": \"Recliner\",\r\n  \"hasPriorityBoarding\": true,\r\n  \"hasLoungeAccess\": true,\r\n  \"hasPremiumDining\": true,\r\n  \"hasExtraLegroom\": true,\r\n  \"isRefundable\": true,\r\n  \"isChangeable\": true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/cabin-classes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "cabin-classes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get cabin class by aircraft",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/cabin-classes/aircraft/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "cabin-classes",
+                "aircraft",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Seat Map",
+      "item": [
+        {
+          "name": "create seat map",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"EK202 Economy Seat Map\",\r\n  \"totalRows\": 20,\r\n  \"leftSeatsPerRow\": 3,\r\n  \"rightSeatsPerRow\": 3,\r\n  \"cabinClassId\": 1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/seat-maps",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "seat-maps"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete set map",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/seat-maps/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "seat-maps",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update seat map",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Business Class Layout\",\r\n  \"totalRows\": 12,\r\n  \"leftSeatsPerRow\": 3,\r\n  \"rightSeatsPerRow\": 3,\r\n  \"airlineId\": 1,\r\n  \"cabinClassId\": 3\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/seat-maps/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "seat-maps",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "find by id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/seat-maps/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "seat-maps",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "find by cabinId",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/seat-maps/cabin-class/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "seat-maps",
+                "cabin-class",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Seat Service",
+      "item": [
+        {
+          "name": "get all seats",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/seats",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "seats"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Flight Instance Cabin",
+      "item": [
+        {
+          "name": "create flight cabin",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"flightId\": 2,\r\n  \"cabinClassId\": 1,\r\n  \"flightInstanceId\":25,\r\n  \"totalSeats\": 150,\r\n  \"bookedSeats\": 0,\r\n  \"baseFare\": 3000.00,\r\n  \"windowSurcharge\": 200.0,\r\n  \"aisleSurcharge\": 100.0,\r\n  \"taxesAndFees\": 1000.00,\r\n  \"airlineFees\": 500.00,\r\n  \"currentPrice\": 6500.00,\r\n  \"minAdvanceBookingDays\": 2,\r\n  \"maxAdvanceBookingDays\": 180,\r\n  \"isActive\": true\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/flight-instance-cabins",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "flight-instance-cabins"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all cabins for a particular Flight Instance ID",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/flight-instance-cabins/flight-instance/25",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "flight-instance-cabins",
+                "flight-instance",
+                "25"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get cabin by Flight Instance ID and Cabin Class ID",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/flight-instance-cabins/flight-instance/25/cabin-class/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "flight-instance-cabins",
+                "flight-instance",
+                "25",
+                "cabin-class",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Fare",
+      "item": [
+        {
+          "name": "get fare by cabin class id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/fares/flight/2/cabin-class/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "fares",
+                "flight",
+                "2",
+                "cabin-class",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get all fares",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/fares",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "fares"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "create fare",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"ECONOMY_FLEX\",\r\n  \"rbdCode\": \"B\",\r\n  \"flightId\": 2,\r\n  \"cabinClassId\": 1,\r\n  \"baseFare\": 6500.0,\r\n  \"taxesAndFees\": 500.0,\r\n  \"airlineFees\": 200.0,\r\n  \"currentPrice\": 0.0,\r\n  \"fareLabel\": \"Economy Flex\",\r\n  \"extraSeatSpace\": false,\r\n  \"preferredSeatChoice\": true,\r\n  \"advanceSeatSelection\": true,\r\n  \"guaranteedSeatTogether\": true,\r\n  \"priorityBoarding\": true,\r\n  \"priorityCheckin\": true,\r\n  \"fastTrackSecurity\": false,\r\n  \"complimentaryMeals\": true,\r\n  \"premiumMealChoice\": true,\r\n  \"inFlightInternet\": true,\r\n  \"inFlightEntertainment\": true,\r\n  \"complimentaryBeverages\": true,\r\n  \"freeDateChange\": true,\r\n  \"partialRefund\": true,\r\n  \"fullRefund\": false,\r\n  \"loungeAccess\": false,\r\n  \"airportTransfer\": false\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/fares",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "fares"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Fare Rules",
+      "item": [
+        {
+          "name": "get fare rules by fare id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/fare-rules/fare/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "fare-rules",
+                "fare",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "create fare rule",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"ruleName\": \"ECONOMY_FLEX_RULES\",\r\n  \"fareId\": 2,\r\n  \"airlineId\": 2,\r\n  \"isRefundable\": true,\r\n  \"changeFee\": 0.0,\r\n  \"cancellationFee\": 1000.0,\r\n  \"refundDeadlineDays\": 1,\r\n  \"changeDeadlineHours\": 4,\r\n  \"isChangeable\": true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/fare-rules",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "fare-rules"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Baggage Service",
+      "item": [
+        {
+          "name": "create bagage policy",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"ECONOMY_SAVER_BAGGAGE\",\r\n  \"fareId\": 1,\r\n  \"description\": \"Standard economy baggage allowance\",\r\n  \"cabinBaggageMaxWeight\": 7.0,\r\n  \"cabinBaggagePieces\": 1,\r\n  \"cabinBaggageWeightPerPiece\": 7.0,\r\n  \"cabinBaggageMaxDimension\": 115,\r\n  \"checkInBaggageMaxWeight\": 25.0,\r\n  \"checkInBaggagePieces\": 1,\r\n  \"checkInBaggageWeightPerPiece\": 25.0,\r\n  \"freeCheckedBagsAllowance\": 1,\r\n  \"priorityBaggage\": false,\r\n  \"extraBaggageAllowance\": false\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/baggage-policies",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "baggage-policies"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get baggae policy",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/baggage-policies/fare/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "baggage-policies",
+                "fare",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "meal",
+      "item": [
+        {
+          "name": "create meal",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"code\": \"VGML01\",\r\n  \"name\": \"Vegetarian Indian Meal\",\r\n  \"mealType\": \"VEGETARIAN\",\r\n  \"dietaryRestriction\": \"No onion, no garlic\",\r\n  \"ingredients\": \"Rice, lentils, vegetables, spices, yogurt\",\r\n  \"imageUrl\": \"https://example.com/images/veg-meal.jpg\",\r\n  \"available\": true,\r\n  \"requiresAdvanceBooking\": true,\r\n  \"advanceBookingHours\": 24,\r\n  \"displayOrder\": 1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/meals",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "meals"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get meals for logged-in airline",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/meals/airline",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "meals",
+                "airline"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get meal by ID",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/meals/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "meals",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Ancillary",
+      "item": [
+        {
+          "name": "create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Airline-Id",
+                "value": "1"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"type\": \"BAGGAGE\",\r\n  \"subType\": \"EXTRA_BAG\",\r\n  \"rfisc\": \"0B5\",\r\n  \"name\": \"Extra Baggage\",\r\n  \"description\": \"Allows passengers to carry additional checked baggage\",\r\n  \"iconUrl\": \"https://example.com/icons/baggage.png\",\r\n  \"metadata\": {\r\n    \"baggage\": {\r\n      \"weight\": 25,\r\n      \"unit\": \"KG\",\r\n      \"pieces\": 1,\r\n      \"category\": \"CHECKED\",\r\n      \"dimensions\": \"55x40x23 cm\",\r\n      \"notes\": \"Additional baggage allowance up to 25kg\"\r\n    }\r\n  },\r\n  \"displayOrder\": 1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/ancillaries",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "ancillaries"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/ancillaries",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "ancillaries"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Insurance Coverage",
+      "item": [
+        {
+          "name": "insurance coverages",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"ancillaryId\": 2,\r\n  \"coverageType\": \"MEDICAL_EMERGENCY\",\r\n  \"name\": \"Emergency Medical Coverage\",\r\n  \"description\": \"Covers eligible medical expenses during domestic and international travel\",\r\n  \"coverageAmount\": 100000,\r\n  \"isFlat\": true,\r\n  \"claimCondition\": \"Valid medical documents and proof of emergency are required\",\r\n  \"emergencyContact\": \"+911234567890\",\r\n  \"displayOrder\": 1,\r\n  \"active\": true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/insurance-coverages",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "insurance-coverages"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "create insurance",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/insurance-coverages",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "insurance-coverages"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Flight Meal",
+      "item": [
+        {
+          "name": "create flight meal",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"flightId\": 2,\r\n  \"mealId\": 2,\r\n  \"available\": true,\r\n  \"price\": 750.00,\r\n  \"displayOrder\": 2\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/flight-meals",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "flight-meals"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get meals by flight",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/flight-meals/flight/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "flight-meals",
+                "flight",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Flight Cabin Ancillaries",
+      "item": [
+        {
+          "name": "create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"flightId\": 2,\r\n  \"cabinClassId\": 1,\r\n  \"ancillaryId\": 1,\r\n  \"available\": true,\r\n  \"maxQuantity\": 2,\r\n  \"price\": 1500.00,\r\n  \"includedInFare\": false\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/flight-cabin-ancillaries",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "flight-cabin-ancillaries"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get by flight id and cabin class id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/flight-cabin-ancillaries/flight/2/cabin/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "flight-cabin-ancillaries",
+                "flight",
+                "2",
+                "cabin",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get by flight id and cabin and type",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/flight-cabin-ancillaries/flight/2/cabin/1/type/BAGGAGE",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "flight-cabin-ancillaries",
+                "flight",
+                "2",
+                "cabin",
+                "1",
+                "type",
+                "BAGGAGE"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Booking",
+      "item": [
+        {
+          "name": "create booking",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-User-Id",
+                "value": "1",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"flightId\": 2,\r\n  \"flightInstanceId\": 31,\r\n  \"cabinClass\": \"ECONOMY\",\r\n  \"fareId\": 1,\r\n  \"contactInfo\": {\r\n    \"email\": \"akmahipathi@gmail.com\",\r\n    \"phone\": \"+919876543210\"\r\n  },\r\n  \"passengers\": [\r\n    {\r\n      \"firstName\": \"sandhya\",\r\n      \"lastName\": \"akshith\",\r\n      \"email\": \"sandhya@gmail.com\",\r\n      \"phone\": \"+919876543210\",\r\n      \"dateOfBirth\": \"1998-05-15\",\r\n      \"gender\": \"FEMALE\",\r\n      \"seatInstanceId\": 2,\r\n      \"nationality\": \"Indian\"\r\n    }\r\n  ],\r\n  \"ancillaryIds\": [],\r\n  \"mealIds\": []\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/bookings",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "bookings"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get bookings by flight id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{airline_admin_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/bookings/flight/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "bookings",
+                "flight",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get by airline id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "user booking history",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get by booking id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Payment",
+      "item": [
+        {
+          "name": "verify",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"paymentId\": 111,\r\n  \"success\": true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/payments/verify",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "payments",
+                "verify"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

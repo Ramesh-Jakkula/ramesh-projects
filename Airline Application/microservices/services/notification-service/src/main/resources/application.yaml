@@ -1,0 +1,60 @@
+
+spring:
+  application:
+    name: notification-service
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME:YOUR_GMAIL_ADDRESS}
+    password: ${MAIL_APP_PASSWORD:YOUR_GMAIL_APP_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+        debug: false
+
+  # ── Kafka Consumer ──────────────────────────────────────────────────────────
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: notification-service-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JacksonJsonDeserializer
+      properties:
+        spring.json.trusted.packages: "com.airline.event"
+        spring.json.use.type.headers: false
+        spring.json.value.default.type: com.airline.event.BookingConfirmedEvent
+
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML
+    encoding: UTF-8
+    cache: false
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+
+notification:
+  from-email: ${MAIL_FROM:YOUR_GMAIL_ADDRESS}
+  from-name: "Air Notification"
+  checkin-url: "your frontend url"
+
+server:
+  port: 5012
+
+
