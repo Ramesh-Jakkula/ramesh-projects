@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.airline</groupId>
+		<artifactId>cloud</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>service-registry</artifactId>
+	<name>Service Registry</name>
+	<description>Eureka service discovery server for registering and locating microservices.</description>
+	<!--
+        NO <properties> block needed here!
+
+        Previously this had:
+            <java.version>17</java.version>
+            <spring-cloud.version>2025.1.0</spring-cloud.version>
+
+        Both are ALREADY defined in the root POM and inherited through the parent chain.
+        Duplicating them:
+          - Creates maintenance burden (update in N places instead of 1)
+          - Risks version drift (root says 2025.1.0, child accidentally says 2024.0.0)
+          - The spring-cloud.version property wasn't even being used here (no dependencyManagement in this POM)
+    -->
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<!--
+    Makes this module a runnable Spring Boot JAR.
+    Version comes from root's pluginManagement — no need to specify it here.
+-->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<to>
+						<image>jram224/gds-service-registry:1.0.0</image>
+					</to>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
