@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="052dd4b0-8e27-4153-9aac-cd6ff6dc1ed2" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Record" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="3MTDBMG1KBhwqSvuWnMvW99f86n" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ApiGatewayApplication.executor": "Run",
+    "Application.ConfigServerApplication.executor": "Run",
+    "Application.ServiceRegistryApplication.executor": "Run",
+    "Application.UserServiceApplication.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/rames/IdeaProjects/social-platform",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.ApiGatewayApplication">
+    <configuration name="ApiGatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.social.apigateway.ApiGatewayApplication" />
+      <module name="api-gateway" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.social.apigateway.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConfigServerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.social.configserver.ConfigServerApplication" />
+      <module name="config-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.social.configserver.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServiceRegistryApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.social.serviceregistry.ServiceRegistryApplication" />
+      <module name="service-registry" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.social.serviceregistry.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <envs>
+        <env name="JWT_SECRET" value="mfNmmgWm4WQGdEewA0fvhhm2NKeY4XqoyYCeUOfyjiQ=" />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="com.social.userservice.UserServiceApplication" />
+      <module name="user-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.social.userservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.ApiGatewayApplication" />
+      <item itemvalue="Application.ConfigServerApplication" />
+      <item itemvalue="Application.ServiceRegistryApplication" />
+      <item itemvalue="Application.UserServiceApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ApiGatewayApplication" />
+        <item itemvalue="Application.UserServiceApplication" />
+        <item itemvalue="Application.ServiceRegistryApplication" />
+        <item itemvalue="Application.ConfigServerApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="052dd4b0-8e27-4153-9aac-cd6ff6dc1ed2" name="Changes" comment="" />
+      <created>1795365527465</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1795365527465</updated>
+    </task>
+    <servers />
+  </component>
+</project>

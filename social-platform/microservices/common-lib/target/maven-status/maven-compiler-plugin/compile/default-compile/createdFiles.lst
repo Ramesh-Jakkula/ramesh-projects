@@ -1,0 +1,14 @@
+com\social\common_lib\constants\SecurityHeaders.class
+com\social\common_lib\payload\response\ApiErrorResponse.class
+com\social\common_lib\payload\response\ApiErrorResponse$FieldViolation.class
+com\social\common_lib\enums\MediaStatus.class
+com\social\common_lib\enums\PostVisibility.class
+com\social\common_lib\enums\UserRole.class
+com\social\common_lib\enums\NotificationType.class
+com\social\common_lib\exception\SocialPlatformException.class
+com\social\common_lib\CommonLibApplication.class
+com\social\common_lib\enums\MediaType.class
+com\social\common_lib\enums\UserStatus.class
+com\social\common_lib\enums\ErrorCode.class
+com\social\common_lib\enums\PrivacyType.class
+com\social\common_lib\enums\FollowStatus.class
